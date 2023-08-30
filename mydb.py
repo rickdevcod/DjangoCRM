@@ -3,7 +3,7 @@ import mysql.connector
 dataBase = mysql.connector.connect(
 	host = 'localhost',
 	user = 'root',
-	passwd = 'Am150296%'
+	passwd = '3306' # A SENHA DO BANCO DE DADOS, DEVE SER A SUA UTILIZEI O MYSQL
 
 	)
 
