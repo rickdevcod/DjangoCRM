@@ -2,18 +2,61 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-mb-3">
+
 {% if user.is_authenticated %}
 
-<h1>Hello World</h1>
-{% else %}
 
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Sobrenome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Rua</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Cep</th>
+      <th scope="col">Conta criada em:</th>
+      <th scope="col">ID</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+{% if records %}
+    {% for record in records %}
+      <tr>
+          <td>{{ record.first_name }}</td>
+          <td>{{ record.last_name }}</td>
+          <td>{{ record.email }}</td>
+          <td>{{ record.phone }}</td>
+          <td>{{ record.address }}</td>
+          <td>{{ record.city }}</td>
+          <td>{{ record.state }}</td>
+         <td> {{ record.zipcode }}</td>
+          <td>{{ record.created_at }}</td>
+         <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+
+
+        </tr>
+    {% endfor %}
+
+{% endif %}
+
+    </tbody>
+  </table>
+
+
+
+{% else %}
+<div class="col-md-6 offset-mb-3">
 <h1>Loguin</h1>
 <br/>
 
 <form method="POST" action="{% url 'home' %}">
 	{% csrf_token %}
-	<form>
+  
   <div class="mb-3">
   
     <input type="text" class="form-control" name="username", placeholder="Usuário" required>
@@ -22,13 +65,11 @@
   <div class="mb-3">
     <input type="password" class="form-control" name="password", placeholder="Senha" required>
   </div>
-
+  <br/>
   <button type="submit" class="btn btn-secondary">Loguin</button>
-</form>
+
 </form>
 
-
-</div>
 
 {% endif %}
 

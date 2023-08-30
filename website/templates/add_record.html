@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-6 offset-mb-3">
+<h1> Add Record </h1>
+<br/>
+<form method="POST" action="{% url 'add_record' %}">
+	{% csrf_token %}
+
+	{{form.as_p}}
+<!--criar botao parte 1 copia abaixo-->
+<br/>
+<button type="submit" class="btn btn-secondary">Add Record</button>
+<!-- cola abaixo parte 2 e muda o nome -->
+<a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
+
+
+</form>
+
+</div>
+{% endblock %}
