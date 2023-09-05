@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
 
-
+# Parte lógica das funções Rickdevcod
 def home(request):
 	records = Record.objects.all()
 	# Verificar se esta fazendo loguin
@@ -36,7 +36,7 @@ def register_user(request):
 		form = SignUpForm(request.POST)
 		if form.is_valid():
 			form.save()
-			# Authenticate and login
+			# Autenticação do Loguin
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']
 			user = authenticate(username=username, password=password)
